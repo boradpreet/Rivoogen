@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rivoogen.com/sitemap.xml
+
+# Prevent search engines from indexing dev build
+User-agent: *
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /temp/
