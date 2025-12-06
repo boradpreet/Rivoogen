@@ -8,9 +8,9 @@ const PORT = 5001;
 // -------------------------------------------
 // 🔥 EMAIL CREDENTIALS
 // -------------------------------------------
-const MAIL_USER = "boradpreet@gmail.com";
-const MAIL_PASS = "ojey yjma pxhx krwm";
-const ADMIN_EMAIL = "boradpreet@gmail.com";
+const MAIL_USER = "";
+const MAIL_PASS = "";
+const ADMIN_EMAIL = "";
 
 // -------------------------------------------
 // THEME COLORS
