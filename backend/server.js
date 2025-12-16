@@ -30,7 +30,20 @@ const LOGO_URL = "https://res.cloudinary.com/djh2ro9tm/image/upload/v1764413088/
 const COMPANY_NAME = "Rivoogen";
 const COMPANY_WEBSITE = "https://rivoogen.com";
 
-app.use(cors());
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",      // local dev
+    "https://rivoogen.com",        // production domain
+    "https://www.rivoogen.com",
+    "https://rivoogen.vercel.app"  // vercel preview
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // -------------------------------------------
