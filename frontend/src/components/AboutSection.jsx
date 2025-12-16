@@ -236,7 +236,7 @@ export default function AboutSection() {
                 Rivoogen
               </p>
               <p className="text-sm mt-2" style={{ color: colors.carbonBlack, opacity: 0.6 }}>
-                Founded 2020
+                Founded 2025
               </p>
             </div>
           </div>

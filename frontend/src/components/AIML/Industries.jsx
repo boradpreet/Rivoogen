@@ -223,49 +223,7 @@ export default function IndustriesSection() {
           })}
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div
-            className="p-6 rounded-xl text-center transition-all duration-300 hover:scale-105"
-            style={{
-              backgroundColor: colors.surface,
-              border: `1px solid ${colors.border}`,
-            }}
-          >
-            <p className="text-4xl font-bold mb-2" style={{ color: colors.carbonBlack }}>8+</p>
-            <p className="text-sm" style={{ color: colors.carbonBlack, opacity: 0.6 }}>Industries Served</p>
-          </div>
-          <div
-            className="p-6 rounded-xl text-center transition-all duration-300 hover:scale-105"
-            style={{
-              backgroundColor: colors.surface,
-              border: `1px solid ${colors.border}`,
-            }}
-          >
-            <p className="text-4xl font-bold mb-2" style={{ color: colors.carbonBlack }}>500+</p>
-            <p className="text-sm" style={{ color: colors.carbonBlack, opacity: 0.6 }}>Projects Delivered</p>
-          </div>
-          <div
-            className="p-6 rounded-xl text-center transition-all duration-300 hover:scale-105"
-            style={{
-              backgroundColor: colors.surface,
-              border: `1px solid ${colors.border}`,
-            }}
-          >
-            <p className="text-4xl font-bold mb-2" style={{ color: colors.carbonBlack }}>200+</p>
-            <p className="text-sm" style={{ color: colors.carbonBlack, opacity: 0.6 }}>Global Clients</p>
-          </div>
-          <div
-            className="p-6 rounded-xl text-center transition-all duration-300 hover:scale-105"
-            style={{
-              backgroundColor: colors.surface,
-              border: `1px solid ${colors.border}`,
-            }}
-          >
-            <p className="text-4xl font-bold mb-2" style={{ color: colors.carbonBlack }}>99%</p>
-            <p className="text-sm" style={{ color: colors.carbonBlack, opacity: 0.6 }}>Client Satisfaction</p>
-          </div>
-        </div>
+   
       </div>
     </section>
   );

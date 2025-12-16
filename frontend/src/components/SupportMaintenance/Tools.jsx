@@ -7,7 +7,7 @@ const Tools = () => {
     { name: "Grafana", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg", category: "Analytics" },
     { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", category: "Infrastructure" },
     { name: "Nginx", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg", category: "Infrastructure" },
-    { name: "PM2", icon: "https://pm2.keymetrics.io/images/pm2-logo.png", category: "Development" },
+    { name: "PM2", icon: "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/2/pm2-icon-de2tnxlx7mpm39v66kkhc9.png/pm2-icon-j1kc5wcz2f8itsbu1k1ey.png?_a=DATAg1AAZAA0", category: "Development" },
     { name: "Node Monitor", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", category: "Development" },
     { name: "Prometheus", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg", category: "Monitoring" },
     { name: "Datadog", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/datadog/datadog-original.svg", category: "Monitoring" },
@@ -38,46 +38,38 @@ const Tools = () => {
       : tools.filter((tool) => tool.category === activeCategory);
 
   return (
-    <section
-      className="px-6 py-20 md:px-16 lg:px-32 relative overflow-hidden"
+    <section 
+      className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-12 sm:py-16 md:py-20 relative overflow-hidden"
       style={{ background: colors.ghostWhite }}
     >
       {/* Decorative background elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 rounded-full opacity-5 blur-3xl" 
-           style={{ background: colors.carbonBlack }}></div>
-      <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full opacity-5 blur-3xl" 
-           style={{ background: colors.carbonBlack }}></div>
+      <div 
+        className="absolute top-20 right-10 w-48 h-48 sm:w-72 sm:h-72 rounded-full opacity-5 blur-3xl"
+        style={{ background: colors.carbonBlack }}
+      ></div>
+      <div 
+        className="absolute bottom-20 left-10 w-64 h-64 sm:w-96 sm:h-96 rounded-full opacity-5 blur-3xl"
+        style={{ background: colors.carbonBlack }}
+      ></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
           {/* LEFT SIDE - TOOLS GRID */}
           <div className="order-2 lg:order-1 lg:sticky lg:top-24">
 
             {/* FILTER BUTTONS */}
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className="group px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95"
+                  className="px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95"
                   style={{
-                    background:
-                      activeCategory === category 
-                        ? colors.carbonBlack 
-                        : colors.platinum,
-                    color:
-                      activeCategory === category 
-                        ? colors.ghostWhite 
-                        : colors.text,
-                    border: `2px solid ${
-                      activeCategory === category 
-                        ? colors.carbonBlack 
-                        : colors.border
-                    }`,
-                    boxShadow: activeCategory === category 
-                      ? '0 4px 12px rgba(28, 28, 28, 0.15)' 
-                      : 'none',
+                    background: activeCategory === category ? colors.carbonBlack : colors.platinum,
+                    color: activeCategory === category ? colors.ghostWhite : colors.text,
+                    border: `2px solid ${activeCategory === category ? colors.carbonBlack : colors.border}`,
+                    boxShadow: activeCategory === category ? '0 4px 12px rgba(28, 28, 28, 0.15)' : 'none',
                   }}
                 >
                   {category}
@@ -85,57 +77,45 @@ const Tools = () => {
               ))}
             </div>
 
-            {/* TOOLS GRID WITH ENHANCED ANIMATIONS */}
-            <div className="grid grid-cols-6 gap-4 mb-8">
+            {/* TOOLS GRID - RESPONSIVE */}
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4 mb-8">
               {filteredTools.map((tool, index) => (
                 <div
                   key={index}
                   onMouseEnter={() => setHoveredTool(index)}
                   onMouseLeave={() => setHoveredTool(null)}
-                  className="aspect-square rounded-2xl flex flex-col items-center justify-center p-3 cursor-pointer transition-all duration-300 group relative"
+                  className="aspect-square rounded-xl sm:rounded-2xl flex flex-col items-center justify-center p-2 sm:p-3 cursor-pointer transition-all duration-300 group relative"
                   style={{
-                    background: hoveredTool === index 
-                      ? colors.ghostWhite 
-                      : colors.platinum,
-                    border: `2px solid ${
-                      hoveredTool === index 
-                        ? colors.carbonBlack 
-                        : colors.border
-                    }`,
-                    transform: hoveredTool === index 
-                      ? 'translateY(-8px) scale(1.05)' 
-                      : 'translateY(0) scale(1)',
-                    boxShadow: hoveredTool === index 
-                      ? '0 12px 24px rgba(28, 28, 28, 0.12)' 
-                      : '0 2px 4px rgba(28, 28, 28, 0.05)',
+                    background: hoveredTool === index ? colors.ghostWhite : colors.platinum,
+                    border: `2px solid ${hoveredTool === index ? colors.carbonBlack : colors.border}`,
+                    transform: hoveredTool === index ? 'translateY(-8px) scale(1.05)' : 'translateY(0) scale(1)',
+                    boxShadow: hoveredTool === index ? '0 12px 24px rgba(28, 28, 28, 0.12)' : '0 2px 4px rgba(28, 28, 28, 0.05)',
                     animation: `fadeIn 0.3s ease-out ${index * 0.03}s backwards`,
                   }}
                 >
                   {/* Gradient overlay on hover */}
                   <div 
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
                       background: `linear-gradient(135deg, ${colors.ghostWhite} 0%, ${colors.platinum} 100%)`,
                     }}
                   ></div>
 
                   {/* Icon with scale animation */}
-                  <div className="relative z-10 mb-2 transition-transform duration-300 group-hover:scale-110">
+                  <div className="relative z-10 mb-1 sm:mb-2 transition-transform duration-300 group-hover:scale-110">
                     <img 
                       src={tool.icon} 
                       alt={tool.name} 
-                      className="w-10 h-10 object-contain"
+                      className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"
                       loading="lazy"
                     />
                   </div>
 
                   {/* Tool name */}
-                  <p
-                    className="text-[10px] text-center font-semibold leading-tight relative z-10 transition-colors duration-300"
+                  <p 
+                    className="text-[9px] sm:text-[10px] md:text-xs text-center font-semibold leading-tight relative z-10 transition-colors duration-300"
                     style={{ 
-                      color: hoveredTool === index 
-                        ? colors.carbonBlack 
-                        : colors.text,
+                      color: hoveredTool === index ? colors.carbonBlack : colors.text,
                     }}
                   >
                     {tool.name}
@@ -143,8 +123,8 @@ const Tools = () => {
 
                   {/* Category badge on hover */}
                   {hoveredTool === index && (
-                    <div
-                      className="absolute -top-2 -right-2 px-2 py-0.5 rounded-full text-[8px] font-bold z-20 animate-fadeIn"
+                    <div 
+                      className="hidden sm:block absolute -top-2 -right-2 px-2 py-0.5 rounded-full text-[8px] font-bold z-20 animate-fadeIn"
                       style={{
                         background: colors.carbonBlack,
                         color: colors.ghostWhite,
@@ -162,14 +142,17 @@ const Tools = () => {
           <div className="order-1 lg:order-2">
             {/* Badge */}
             <div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6"
               style={{
                 background: colors.platinum,
                 border: `1px solid ${colors.border}`,
               }}
             >
-              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: colors.carbonBlack }}></span>
-              <p
+              <span 
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{ background: colors.carbonBlack }}
+              ></span>
+              <p 
                 className="text-xs font-bold tracking-wider uppercase"
                 style={{ color: colors.text, opacity: 0.8 }}
               >
@@ -177,9 +160,9 @@ const Tools = () => {
               </p>
             </div>
 
-            {/* Heading with gradient text effect */}
-            <h2
-              className="text-4xl md:text-5xl font-serif leading-[1.1] mb-6 bg-clip-text"
+            {/* Heading */}
+            <h2 
+              className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4 sm:mb-6"
               style={{ color: colors.carbonBlack }}
             >
               Enterprise-grade tools for{" "}
@@ -196,8 +179,8 @@ const Tools = () => {
               </span>
             </h2>
 
-            <p
-              className="text-lg md:text-xl mb-10 leading-relaxed max-w-xl"
+            <p 
+              className="text-base sm:text-lg md:text-xl mb-6 sm:mb-10 leading-relaxed max-w-xl"
               style={{ color: colors.text, opacity: 0.75 }}
             >
               <span className="font-bold" style={{ color: colors.carbonBlack }}>Rivoogen's</span> comprehensive toolkit covers monitoring, deployment,
@@ -206,7 +189,7 @@ const Tools = () => {
             </p>
 
             {/* STATS CARDS */}
-            <div className="grid grid-cols-3 gap-4 mb-10">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-10">
               {[
                 { value: "50+", label: "Tools Integrated" },
                 { value: "99.9%", label: "Uptime SLA" },
@@ -214,20 +197,20 @@ const Tools = () => {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="p-5 rounded-2xl transition-all duration-300 hover:scale-105 cursor-pointer group"
+                  className="p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 cursor-pointer group"
                   style={{
                     background: colors.platinum,
                     border: `2px solid ${colors.border}`,
                   }}
                 >
                   <div 
-                    className="text-3xl md:text-4xl font-bold mb-1" 
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1"
                     style={{ color: colors.carbonBlack }}
                   >
                     {stat.value}
                   </div>
                   <div 
-                    className="text-xs font-medium" 
+                    className="text-[10px] sm:text-xs font-medium"
                     style={{ color: colors.text, opacity: 0.6 }}
                   >
                     {stat.label}
@@ -237,7 +220,7 @@ const Tools = () => {
             </div>
 
             {/* FEATURE LIST */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {[
                 { icon: "✓", text: "Real-time performance monitoring across all services" },
                 { icon: "✓", text: "Automated deployment with zero-downtime updates" },
@@ -248,7 +231,7 @@ const Tools = () => {
                   className="flex items-start gap-3 group cursor-pointer"
                 >
                   <div 
-                    className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 group-hover:scale-110"
+                    className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 group-hover:scale-110"
                     style={{ 
                       background: colors.carbonBlack,
                       color: colors.ghostWhite,
@@ -257,7 +240,7 @@ const Tools = () => {
                     {feature.icon}
                   </div>
                   <p 
-                    className="text-sm font-medium leading-relaxed transition-colors duration-300"
+                    className="text-xs sm:text-sm font-medium leading-relaxed transition-colors duration-300"
                     style={{ color: colors.text }}
                   >
                     {feature.text}

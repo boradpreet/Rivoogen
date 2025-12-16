@@ -30,7 +30,7 @@ const technologies = [
   { name: "Docker", category: "Cloud", logo: "https://cdn.worldvectorlogo.com/logos/docker.svg" },
   
   // Design
-  { name: "Figma", category: "Design", logo: "https://cdn.worldvectorlogo.com/logos/figma-5.svg" },
+  { name: "Figma", category: "Design", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1365px-Figma-logo.svg.png" },
 ];
 
 const categoryIcons = {

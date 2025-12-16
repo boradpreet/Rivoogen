@@ -237,35 +237,7 @@ const Industries = () => {
               </span>
             </h2>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-8 mt-12">
-              {stats.map((stat, idx) => (
-                <div key={idx}>
-                  <div
-                    style={{
-                      borderLeft: `4px solid ${colors.carbonBlack}`,
-                      paddingLeft: "20px",
-                    }}
-                  >
-                    <div
-                      className="text-4xl md:text-5xl font-bold mb-2"
-                      style={{ color: colors.carbonBlack }}
-                    >
-                      {stat.value}
-                    </div>
-                    <div
-                      className="text-sm"
-                      style={{
-                        color: colors.carbonBlack,
-                        opacity: 0.6,
-                      }}
-                    >
-                      {stat.label}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+         
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070')`,
+          backgroundImage: `url('https://i.pinimg.com/1200x/13/bc/3c/13bc3c6bad007d5b1c61a7fb84645265.jpg')`,
         }}
       >
         {/* Gradient Overlay */}
@@ -84,51 +84,7 @@ const HeroSection = () => {
             We design and deploy intelligent AI/ML systems that automate workflows, 
             improve decision-making, and drive business growth.
           </p>
-          {/* Stats or Features */}
-          <div className="grid grid-cols-3 gap-4 max-w-xl">
-            <div className="text-center sm:text-left">
-              <div 
-                className="text-2xl sm:text-3xl font-bold mb-0.5"
-                style={{ color: colors.platinum }}
-              >
-                98%
-              </div>
-              <div 
-                className="text-xs"
-                style={{ color: colors.alabasterGrey }}
-              >
-                Accuracy Rate
-              </div>
-            </div>
-            <div className="text-center sm:text-left">
-              <div 
-                className="text-2xl sm:text-3xl font-bold mb-0.5"
-                style={{ color: colors.platinum }}
-              >
-                50+
-              </div>
-              <div 
-                className="text-xs"
-                style={{ color: colors.alabasterGrey }}
-              >
-                AI Models
-              </div>
-            </div>
-            <div className="text-center sm:text-left">
-              <div 
-                className="text-2xl sm:text-3xl font-bold mb-0.5"
-                style={{ color: colors.platinum }}
-              >
-                24/7
-              </div>
-              <div 
-                className="text-xs"
-                style={{ color: colors.alabasterGrey }}
-              >
-                Automation
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
 

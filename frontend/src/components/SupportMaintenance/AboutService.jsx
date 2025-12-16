@@ -143,7 +143,7 @@ const AboutService = () => {
           className="mt-12 rounded-2xl p-8 md:p-10"
           style={{ background: colors.surface }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
             <div>
               <div 
                 className="text-3xl md:text-4xl font-bold mb-2"
@@ -189,20 +189,7 @@ const AboutService = () => {
               </div>
             </div>
             
-            <div>
-              <div 
-                className="text-3xl md:text-4xl font-bold mb-2"
-                style={{ color: colors.carbonBlack }}
-              >
-                500+
-              </div>
-              <div 
-                className="text-sm font-medium"
-                style={{ color: colors.carbonBlack, opacity: 0.7 }}
-              >
-                Apps Maintained
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>

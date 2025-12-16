@@ -163,20 +163,7 @@ const AboutService = () => {
                 </div>
               </div>
               
-              <div>
-                <div 
-                  className="text-4xl font-bold mb-2"
-                  style={{ color: colors.carbonBlack }}
-                >
-                  500+
-                </div>
-                <div 
-                  className="text-sm font-medium"
-                  style={{ color: colors.carbonBlack, opacity: 0.7 }}
-                >
-                  Projects Done
-                </div>
-              </div>
+              
               
               <div>
                 <div 

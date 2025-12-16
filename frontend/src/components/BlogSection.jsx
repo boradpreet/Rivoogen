@@ -11,7 +11,7 @@ const posts = [
   {
     title: "How AI Automation is Transforming Businesses",
     excerpt: "Discover how artificial intelligence and automation are revolutionizing modern business operations and driving efficiency.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1470",
+    image: "https://i.pinimg.com/1200x/13/bc/3c/13bc3c6bad007d5b1c61a7fb84645265.jpg",
     date: "Feb 15, 2025",
     readTime: "5 min read",
     category: "AI & Automation",
