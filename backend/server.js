@@ -5,12 +5,18 @@ const nodemailer = require("nodemailer");
 const app = express();
 const PORT = 5001;
 
+require("dotenv").config();
+
+
 // -------------------------------------------
-// 🔥 EMAIL CREDENTIALS
 // -------------------------------------------
-const MAIL_USER = "";
-const MAIL_PASS = "";
-const ADMIN_EMAIL = "";
+// 🔥 EMAIL CREDENTIALS (FROM .env)
+// -------------------------------------------
+const MAIL_USER = process.env.MAIL_USER;
+const MAIL_PASS = process.env.MAIL_PASS;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+
+
 
 // -------------------------------------------
 // THEME COLORS
@@ -30,20 +36,7 @@ const LOGO_URL = "https://res.cloudinary.com/djh2ro9tm/image/upload/v1764413088/
 const COMPANY_NAME = "Rivoogen";
 const COMPANY_WEBSITE = "https://rivoogen.com";
 
-const corsOptions = {
-  origin: [
-    "http://localhost:3000",      // local dev
-    "https://rivoogen.com",        // production domain
-    "https://www.rivoogen.com",
-    "https://rivoogen.vercel.app"  // vercel preview
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-
+app.use(cors());
 app.use(express.json());
 
 // -------------------------------------------
