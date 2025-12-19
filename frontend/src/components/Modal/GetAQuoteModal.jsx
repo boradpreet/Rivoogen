@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import colors from "../../theme/color";
-import { X, Send, MessageCircle, MapPin, Phone } from "lucide-react";
+import { X, Send, MessageCircle, MapPin, Phone, Loader2 } from "lucide-react";
 import toast from "react-hot-toast"; 
 
 // 🔹 Define backend URL here
-const API_URL = "https://rivoogen.onrender.com/api/enquiry";
+const API_URL = "http://localhost:5001/api/enquiry";
 
 const GetAQuoteModal = ({ open, onClose }) => {
   if (!open) return null;
@@ -73,7 +73,7 @@ const GetAQuoteModal = ({ open, onClose }) => {
         services: [],
       });
 
-      // Optional: close modal after submit
+      // Optional: close modal after success
       // onClose && onClose();
     } catch (error) {
       console.error("Error sending contact form:", error);
@@ -93,11 +93,10 @@ const GetAQuoteModal = ({ open, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-5xl rounded-3xl relative overflow-hidden modal-container"
+        className="w-full max-w-5xl rounded-3xl relative overflow-hidden flex flex-col"
         style={{
           background: colors.ghostWhite,
           maxHeight: "90vh",
-          overflowY: "auto",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -123,7 +122,7 @@ const GetAQuoteModal = ({ open, onClose }) => {
           }
         `}</style>
 
-        <div className="grid lg:grid-cols-5">
+        <div className="grid lg:grid-cols-5 flex-1 overflow-y-auto modal-container">
           {/* Left Sidebar - Contact Info */}
           <div
             className="lg:col-span-2 p-6 sm:p-8 md:p-10"
@@ -269,7 +268,7 @@ const GetAQuoteModal = ({ open, onClose }) => {
 
           {/* Right Side - Form */}
           <div
-            className="lg:col-span-3 p-6 sm:p-8 md:p-10"
+            className="lg:col-span-3 p-6 sm:p-8 md:p-10 pb-24"
             style={{
               background: colors.softLinen,
             }}
@@ -322,7 +321,7 @@ const GetAQuoteModal = ({ open, onClose }) => {
             {/* Form */}
             <form
               className="space-y-5 sm:space-y-6"
-              onSubmit={handleSubmit} // 🔹 only added handler
+              onSubmit={handleSubmit}
             >
               {/* Name */}
               <div>
@@ -331,12 +330,14 @@ const GetAQuoteModal = ({ open, onClose }) => {
                   placeholder="Your name"
                   value={formData.name}
                   onChange={handleInputChange("name")}
+                  disabled={submitting}
                   className="w-full p-3 sm:p-4 transition-all duration-300 outline-none"
                   style={{
                     background: "transparent",
                     borderBottom: `2px solid ${colors.carbonBlack}`,
                     color: colors.carbonBlack,
                     fontSize: "16px",
+                    opacity: submitting ? 0.6 : 1,
                   }}
                 />
               </div>
@@ -348,12 +349,14 @@ const GetAQuoteModal = ({ open, onClose }) => {
                   placeholder="you@company.com"
                   value={formData.email}
                   onChange={handleInputChange("email")}
+                  disabled={submitting}
                   className="w-full p-3 sm:p-4 transition-all duration-300 outline-none"
                   style={{
                     background: "transparent",
                     borderBottom: `2px solid ${colors.carbonBlack}`,
                     color: colors.carbonBlack,
                     fontSize: "16px",
+                    opacity: submitting ? 0.6 : 1,
                   }}
                 />
               </div>
@@ -365,12 +368,14 @@ const GetAQuoteModal = ({ open, onClose }) => {
                   placeholder="Tell us a little about the project..."
                   value={formData.message}
                   onChange={handleInputChange("message")}
+                  disabled={submitting}
                   className="w-full p-3 sm:p-4 transition-all duration-300 outline-none resize-none"
                   style={{
                     background: "transparent",
                     borderBottom: `2px solid ${colors.carbonBlack}`,
                     color: colors.carbonBlack,
                     fontSize: "16px",
+                    opacity: submitting ? 0.6 : 1,
                   }}
                 ></textarea>
               </div>
@@ -388,12 +393,17 @@ const GetAQuoteModal = ({ open, onClose }) => {
                     <label
                       key={service.id}
                       className="flex items-center gap-2 cursor-pointer"
+                      style={{
+                        opacity: submitting ? 0.6 : 1,
+                        pointerEvents: submitting ? "none" : "auto",
+                      }}
                     >
                       <input
                         type="checkbox"
                         className="cursor-pointer"
                         checked={formData.services.includes(service.id)}
                         onChange={() => handleServiceToggle(service.id)}
+                        disabled={submitting}
                         style={{
                           width: "20px",
                           height: "20px",
@@ -410,31 +420,55 @@ const GetAQuoteModal = ({ open, onClose }) => {
                   ))}
                 </div>
               </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2"
-                style={{
-                  background: colors.carbonBlack,
-                  color: colors.ghostWhite,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 8px 20px rgba(28, 28, 28, 0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                Let's get started!
-                <Send size={18} />
-              </button>
             </form>
           </div>
+        </div>
+
+        {/* Sticky Footer with Submit Button */}
+        <div
+          className="sticky bottom-0 left-0 right-0 p-4 sm:p-6 lg:pl-[40%]"
+          style={{
+            background: colors.softLinen,
+            borderTop: `2px solid ${colors.alabasterGrey}`,
+          }}
+        >
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={submitting}
+            className="w-full py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2"
+            style={{
+              background: submitting ? colors.alabasterGrey : colors.carbonBlack,
+              color: colors.ghostWhite,
+              cursor: submitting ? "not-allowed" : "pointer",
+              opacity: submitting ? 0.7 : 1,
+            }}
+            onMouseEnter={(e) => {
+              if (!submitting) {
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 20px rgba(28, 28, 28, 0.3)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!submitting) {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
+              }
+            }}
+          >
+            {submitting ? (
+              <>
+                <Loader2 size={18} className="animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                Let's get started!
+                <Send size={18} />
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>
