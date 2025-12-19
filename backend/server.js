@@ -35,9 +35,32 @@ const colors = {
 const LOGO_URL = "https://res.cloudinary.com/djh2ro9tm/image/upload/v1764413088/1001163459_2_ycbkvj.jpg";
 const COMPANY_NAME = "Rivoogen";
 const COMPANY_WEBSITE = "https://rivoogen.com";
-
-app.use(cors());
 app.use(express.json());
+
+const allowedOrigins = [
+  "https://rivoogen-sage.vercel.app",
+  "https://www.rivoogen.com",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin (Postman, server-to-server, curl)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
+
 
 // -------------------------------------------
 // 🔥 MAIL TRANSPORTER
