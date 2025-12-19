@@ -294,5 +294,5 @@ app.post("/api/enquiry", async (req, res) => {
 // ========================================================================
 app.listen(PORT, () =>
   console.log(`🚀 Server running at http://localhost:${PORT}`),
-           console.log($MAIL_USER)
+  console.log(`🚀 Mail User ${MAIL_USER}`),
 );
