@@ -5,7 +5,7 @@ import { X, Send, MessageCircle, MapPin, Phone, Loader2 } from "lucide-react";
 import toast from "react-hot-toast"; 
 
 // 🔹 Define backend URL here
-const API_URL = "http://localhost:5001/api/enquiry";
+const API_URL = "https://rivoogen.onrender.com/api/enquiry";
 
 const GetAQuoteModal = ({ open, onClose }) => {
   if (!open) return null;
